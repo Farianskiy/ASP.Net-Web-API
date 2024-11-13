@@ -1,0 +1,13 @@
+C:\Users\Farianskiy\Desktop\WebASPNet\Project\WebSiteElectronicMind.API\WebSiteElectronicMind.MVC\obj\Release\net8.0\PubTmp\Out\WebSiteElectronicMind.MVC.exe
+C:\Users\Farianskiy\Desktop\WebASPNet\Project\WebSiteElectronicMind.API\WebSiteElectronicMind.MVC\obj\Release\net8.0\PubTmp\Out\appsettings.MVC.Development.json
+C:\Users\Farianskiy\Desktop\WebASPNet\Project\WebSiteElectronicMind.API\WebSiteElectronicMind.MVC\obj\Release\net8.0\PubTmp\Out\appsettings.MVC.json
+C:\Users\Farianskiy\Desktop\WebASPNet\Project\WebSiteElectronicMind.API\WebSiteElectronicMind.MVC\obj\Release\net8.0\PubTmp\Out\WebSiteElectronicMind.MVC.dll
+C:\Users\Farianskiy\Desktop\WebASPNet\Project\WebSiteElectronicMind.API\WebSiteElectronicMind.MVC\obj\Release\net8.0\PubTmp\Out\WebSiteElectronicMind.MVC.deps.json
+C:\Users\Farianskiy\Desktop\WebASPNet\Project\WebSiteElectronicMind.API\WebSiteElectronicMind.MVC\obj\Release\net8.0\PubTmp\Out\WebSiteElectronicMind.MVC.runtimeconfig.json
+C:\Users\Farianskiy\Desktop\WebASPNet\Project\WebSiteElectronicMind.API\WebSiteElectronicMind.MVC\obj\Release\net8.0\PubTmp\Out\WebSiteElectronicMind.MVC.pdb
+C:\Users\Farianskiy\Desktop\WebASPNet\Project\WebSiteElectronicMind.API\WebSiteElectronicMind.MVC\obj\Release\net8.0\PubTmp\Out\System.Net.Http.Formatting.dll
+C:\Users\Farianskiy\Desktop\WebASPNet\Project\WebSiteElectronicMind.API\WebSiteElectronicMind.MVC\obj\Release\net8.0\PubTmp\Out\Newtonsoft.Json.dll
+C:\Users\Farianskiy\Desktop\WebASPNet\Project\WebSiteElectronicMind.API\WebSiteElectronicMind.MVC\obj\Release\net8.0\PubTmp\Out\Newtonsoft.Json.Bson.dll
+C:\Users\Farianskiy\Desktop\WebASPNet\Project\WebSiteElectronicMind.API\WebSiteElectronicMind.MVC\obj\Release\net8.0\PubTmp\Out\SmartFormat.dll
+C:\Users\Farianskiy\Desktop\WebASPNet\Project\WebSiteElectronicMind.API\WebSiteElectronicMind.MVC\obj\Release\net8.0\PubTmp\Out\SmartFormat.Extensions.Newtonsoft.Json.dll
+C:\Users\Farianskiy\Desktop\WebASPNet\Project\WebSiteElectronicMind.API\WebSiteElectronicMind.MVC\obj\Release\net8.0\PubTmp\Out\ZString.dll

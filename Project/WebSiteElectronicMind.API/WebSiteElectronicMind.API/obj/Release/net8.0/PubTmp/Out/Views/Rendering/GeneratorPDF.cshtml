@@ -1,0 +1,310 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "GeneratorPDF";
+}
+
+<div class="hero-section">
+    <h2 style="color: #ffcc00;">Создание PDF файла</h2>
+    <form asp-action="GeneratePdf" method="post" action="/Rendering/GeneratePdf" >
+
+        <!-- Навигация по подразделам -->
+        <div class="subsection-buttons">
+            <button type="button" class="btn btn-secondary" onclick="showSection('section1')">Щит и Электрические характеристики</button>
+            <button type="button" class="btn btn-secondary" onclick="showSection('section2')">Таблица для PDF</button>
+        </div>
+
+        <!-- Первая секция -->
+        <div id="section1" class="form-section">
+            <h3 style="color: #ffcc00;">Щит и Электрические характеристики</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Параметр</th>
+                        <th>Значение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Информация о щите -->
+                    <tr>
+                        <td><label for="Shield_NameShield">Наименование щита сокращенное</label></td>
+                        <td><input type="text" id="Shield_NameShield" name="Shield.NameShield" class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Shield_FullNameShield">Наименование щита полное</label></td>
+                        <td><input type="text" id="Shield_FullNameShield" name="Shield.FullNameShield" class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Shield_TypeShield">Тип щита</label></td>
+                        <td>
+                            <select id="Shield_TypeShield" name="Shield.TypeShield" class="form-control">
+                                <option value="D1">D1</option>
+                                <option value="D2">D2</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <!-- Электрические характеристики -->
+                    <tr>
+                        <td><label for="Electrical_NominalVoltage">Номинальное напряжение</label></td>
+                        <td>
+                            <select id="Electrical_NominalVoltage" name="Electrical.NominalVoltage" class="form-control">
+                                <option value="230">230</option>
+                                <option value="400">400</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label for="Electrical_NominalShield">Номинальный ток щита</label></td>
+                        <td>
+                            <input type="number" id="Electrical_NominalShield" name="Electrical.NominalShield" class="form-control" min="1" max="630"
+                                   onblur="validateRange(this, 1, 630, 'Недопустимый номинальный ток')" />
+                            <span class="error-message" id="error-Electrical_NominalShield" style="color: red; display: none;">Недопустимый номинальный ток</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label for="Electrical_TypeGrounding">Тип системы заземления</label></td>
+                        <td>
+                            <select id="Electrical_TypeGrounding" name="Electrical.TypeGrounding" class="form-control">
+                                <option value="TN-S">TN-S</option>
+                                <option value="TN-C-S">TN-C-S</option>
+                                <option value="TN-C">TN-C</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <!-- Информация о кабелях -->
+                    <tr>
+                        <td><label for="Cable_SupplyCable">Ввод питающего кабеля</label></td>
+                        <td>
+                            <select id="Cable_SupplyCable" name="Cable.SupplyCable" class="form-control">
+                                <option value="Сверху">Сверху</option>
+                                <option value="Снизу">Снизу</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label for="Cable_CableOL">Ввод кабелей ОЛ</label></td>
+                        <td>
+                            <select id="Cable_CableOL" name="Cable.CableOL" class="form-control">
+                                <option value="Сверху">Сверху</option>
+                                <option value="Снизу">Снизу</option>
+                            </select>
+                        </td>
+                    </tr>
+
+
+                    <!-- Степень защиты оболочки -->
+                    <tr>
+                        <td><label for="DegreeProtection">Степень защиты оболочки</label></td>
+                        <td>
+                            <select id="DegreeProtection" name="DegreeProtection" class="form-control">
+                                <option value="IP31">IP31</option>
+                                <option value="IP54">IP54</option>
+                                <option value="IP65">IP65</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <!-- Сальники (оментумы) -->
+                    <tr>
+                        <td><label for="Omentum_TypeOmentum">Тип сальников для ввода питающего кабеля</label></td>
+                        <td>
+                            <select id="Omentum_TypeOmentum" name="Omentum.TypeOmentum" class="form-control">
+                                <option value="HTC">HTC</option>
+                                <option value="PG">PG</option>
+                                <option value="MG">MG</option>
+                                <option value="Сальник ЩРН">Сальник ЩРН</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="Omentum_QuantityOmentum">Количество сальников для ввода питающего кабеля</label></td>
+                        <td>
+                            <input type="number" id="Omentum_QuantityOmentum" name="Omentum.QuantityOmentum" class="form-control" min="1" max="100"
+                                   onblur="validateRange(this, 1, 100, 'Недопустимое количество')" />
+                            <span class="error-message" id="error-Omentum_QuantityOmentum" style="color: red; display: none;">Недопустимое количество</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="Omentum_TypeOmentumOL">Тип сальников для ввода кабелей ОЛ</label></td>
+                        <td>
+                            <select id="Omentum_TypeOmentumOL" name="Omentum.TypeOmentumOL" class="form-control">
+                                <option value="HTC">HTC</option>
+                                <option value="PG">PG</option>
+                                <option value="MG">MG</option>
+                                <option value="Сальник ЩРН">Сальник ЩРН</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label for="Omentum_QuantityOmentumOL">Количество сальников для ввода кабелей ОЛ</label></td>
+                        <td>
+                            <input type="number" id="Omentum_QuantityOmentumOL" name="Omentum.QuantityOmentumOL" class="form-control" min="1" max="100"
+                                   onblur="validateRange(this, 1, 100, 'Недопустимое количество')" />
+                            <span class="error-message" id="error-Omentum_QuantityOmentumOL" style="color: red; display: none;">Недопустимое количество</span>
+                        </td>
+                    </tr>
+
+                    <!-- Питающий кабель -->
+                    <tr>
+                        <td><label for="PowerCable">Питающий кабель</label></td>
+                        <td>
+                            <input type="text" id="PowerCable" name="PowerCable" class="form-control"/>
+                        </td>
+                    </tr>
+
+                    
+
+                    <!-- Комментарий -->
+                    <tr>
+                        <td><label for="Comment">Комментарий</label></td>
+                        <td><textarea id="Comment" name="Comment" class="form-control"></textarea></td>
+                    </tr>
+
+                    <!-- Информация по сборке -->
+                    <tr>
+                        <td><label for="Build_FullNameEngineer">Имя инженера</label></td>
+                        <td><input type="text" id="Build_FullNameEngineer" name="Build.FullNameEngineer" class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Build_NumberOrderCustomer">Номер заказа заказчика</label></td>
+                        <td><input type="text" id="Build_NumberOrderCustomer" name="Build.NumberOrderCustomer" class="form-control" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Build_NumberBuild">Номер сборки</label></td>
+                        <td><input type="text" id="Build_NumberBuild" name="Build.NumberBuild" class="form-control" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <script>
+            function validateRange(input, min, max, errorMessage) {
+                const errorSpan = document.getElementById('error-' + input.id);
+                if (input.value < min || input.value > max) {
+                    errorSpan.textContent = errorMessage;
+                    errorSpan.style.display = 'inline';
+                } else {
+                    errorSpan.style.display = 'none';
+                }
+            }
+        </script>
+
+        <!-- Вторая секция -->
+        <div id="section2" class="form-section" style="display: none;">
+            <h3 style="color: #ffcc00;">Таблица для PDF</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width: 300px;">Название</th>
+                        <th style="width: 250px;">Название схемы</th>
+                        <th style="width: 150px;">Тип</th>
+                        <th style="width: 50px;">Нумерация (буква)</th>
+                        <th style="width: 50px;">Нумерация (цифра)</th>
+                        <th style="width: 80px;">Фаза</th>
+                        <th style="width: 50px;">Уровень</th>
+                        <th style="width: 120px;">Действия</th>
+                    </tr>
+                </thead>
+                <tbody id="renderingTableBody">
+                    <tr>
+                        <td><input type="text" name="RenderingTable[0].Name" class="form-control" /></td>
+                        <td><input type="text" name="RenderingTable[0].NameOfScheme" class="form-control" /></td>
+                        <!-- Выпадающий список для Типа -->
+                        <td>
+                            <select name="RenderingTable[0].Type" class="form-control">
+                                <option value="" selected disabled></option>
+                                <option value="Автомат">Автомат</option>
+                                <option value="Диф автомат">Диф автомат</option>
+                                <option value="УЗО">УЗО</option>
+                            </select>
+                        </td>
+                        <td><input type="text" name="RenderingTable[0].NumberingLetter" class="form-control" /></td>
+                        <td><input type="text" name="RenderingTable[0].NumberingDigit" class="form-control" /></td>
+                        <!-- Выпадающий список для Фазы -->
+                        <td>
+                            <select name="RenderingTable[0].Phase" class="form-control">
+                                <option value="" selected disabled></option>
+                                <option value="А">А</option>
+                                <option value="В">В</option>
+                                <option value="С">С</option>
+                                <option value="З">З</option>
+                            </select>
+                        </td>
+                        <!-- Выпадающий список для Уровня -->
+                        <td>
+                            <select name="RenderingTable[0].Level" class="form-control">
+                                <option value="" selected disabled></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </td>
+                        <td><button type="button" class="btn btn-danger" onclick="removeRow(this)">Удалить</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-primary" onclick="addRow()">Добавить строку</button>
+            <button type="submit" class="btn btn-primary">Сгенерировать PDF</button>
+        </div>
+
+        <!-- Скрипты для переключения разделов -->
+        <script>
+            function showSection(sectionId) {
+                document.getElementById("section1").style.display = sectionId === 'section1' ? 'block' : 'none';
+                document.getElementById("section2").style.display = sectionId === 'section2' ? 'block' : 'none';
+            }
+
+            let rowIndex = 1;
+
+            function addRow() {
+                const tbody = document.getElementById("renderingTableBody");
+                const newRow = document.createElement("tr");
+                newRow.innerHTML = `
+                                <td><input type="text" name="RenderingTable[${rowIndex}].Name" class="form-control" /></td>
+                                <td><input type="text" name="RenderingTable[${rowIndex}].NameOfScheme" class="form-control" /></td>
+                                            <td>
+                        <select name="RenderingTable[${rowIndex}].Type" class="form-control">
+                            <option value="" selected disabled></option>
+                            <option value="Автомат">Автомат</option>
+                            <option value="Диф автомат">Диф автомат</option>
+                            <option value="УЗО">УЗО</option>
+                        </select>
+                    </td>
+                                <td><input type="text" name="RenderingTable[${rowIndex}].NumberingLetter" class="form-control" /></td>
+                                <td><input type="text" name="RenderingTable[${rowIndex}].NumberingDigit" class="form-control" /></td>
+                                            <td>
+                        <select name="RenderingTable[${rowIndex}].Phase" class="form-control">
+                            <option value="" selected disabled></option>
+                            <option value="А">А</option>
+                            <option value="В">В</option>
+                            <option value="С">С</option>
+                            <option value="З">З</option>
+                        </select>
+                    </td>
+
+                    <td>
+                        <select name="RenderingTable[${rowIndex}].Level" class="form-control">
+                            <option value="" selected disabled></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </td>
+                                <td><button type="button" class="btn btn-danger" onclick="removeRow(this)">Удалить</button></td>
+                            `;
+                tbody.appendChild(newRow);
+                rowIndex++;
+            }
+
+            function removeRow(button) {
+                const row = button.closest("tr");
+                row.remove();
+            }
+        </script>
+
+        
+    </form>
+</div>
